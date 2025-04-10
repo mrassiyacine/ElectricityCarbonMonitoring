@@ -1,0 +1,10 @@
+zones:
+  DE:
+    token_env: "EMAPS_TOKEN_DE"
+    active: true
+  FR:
+    token_env: "EMAPS_TOKEN_FR"
+    active: true
+  UK:
+    token_env: "EMAPS_TOKEN_UK"
+    active: false

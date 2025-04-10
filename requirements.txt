@@ -1,0 +1,6 @@
+pandas
+requests
+duckdb
+PyYAML
+dotenv
+streamlit
