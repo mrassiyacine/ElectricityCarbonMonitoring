@@ -47,8 +47,12 @@ class ElectricityMapsDataTransformer:
             raw_data_folder (str): Path to the folder containing raw data.
             processed_data_folder (str): Path to the folder for saving processed data.
         """
+
         self.raw_data_folder = raw_data_folder
         self.db_path = db_path
+        db_folder = os.path.dirname(self.db_path)
+        if not os.path.exists(db_folder):
+            os.makedirs(db_folder)
 
     def load_data(self, carbon_intensity_file: str, power_breakdown_file: str) -> tuple:
         """
