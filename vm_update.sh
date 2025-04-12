@@ -25,6 +25,7 @@ log "Installing dependencies from requirements.txt..."
 pip install --quiet -r requirements.txt || { log "Failed to install dependencies!"; exit 1; }
 
 log "Running the pipeline script..."
+export PYTHONPATH="~/ElectricityCarbonMonitoring:$PYTHONPATH"
 python3 scripts/pipeline.py || { log "Pipeline script execution failed!"; exit 1; }
 
 log "Staging changes to GitHub..."
