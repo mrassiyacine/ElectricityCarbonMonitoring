@@ -29,8 +29,8 @@ WITH daily_data AS (
 with duckdb.connect("data/processed/db.duckdb") as con:
     df_avg_carbon_intensity = con.execute(query_avg_carbon_intensity).fetchdf()
 
-
-st.title("Electricity Cleanliness Report")
+TODAY = pd.to_datetime("now").date()
+st.title(f"Electricity Cleanliness Report for {TODAY}")
 st.caption("How clean was our electricity? Data from Electricity Maps")
 
 st.subheader("📉 Carbon Intensity (gCO₂eq/kWh) for Today")

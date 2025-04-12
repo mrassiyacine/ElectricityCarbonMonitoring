@@ -1,16 +1,12 @@
 import logging
 
-from prefect import flow, task
-
 from scripts.data_extraction.extract import ZoneExtractor, load_zone_configs
 from scripts.data_processing.transform import ElectricityMapsDataTransformer
 
 logging.basicConfig(format="%(asctime)s - %(message)s", level=logging.INFO)
-
 logger = logging.getLogger(__name__)
 
 
-@task
 def extract():
     """
     Extracts data from the electricity maps API for all zones defined in the config file.
@@ -20,7 +16,6 @@ def extract():
         ZoneExtractor(zone=zone, token=token).extract()
 
 
-@task
 def transform():
     """
     Transforms the raw data extracted from the electricity maps API into a structured format
@@ -32,17 +27,14 @@ def transform():
     transformer.process_all_files()
 
 
-@flow(
-    name="Electricity Carbon Intensity Pipeline",
-)
-def electricity_carbon():
+def main():
     """
-    Main flow to extract and transform electricity carbon intensity data.
+    Main function to extract and transform electricity carbon intensity data.
     """
     extract()
     transform()
-    logger.info(f"Pipeline completed! Refresh your Streamlit app.")
+    logger.info("Pipeline completed! Refresh your Streamlit app.")
 
 
 if __name__ == "__main__":
-    electricity_carbon()
+    main()

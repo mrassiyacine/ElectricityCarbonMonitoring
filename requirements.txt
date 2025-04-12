@@ -4,4 +4,3 @@ duckdb
 PyYAML
 dotenv
 streamlit
-prefect
