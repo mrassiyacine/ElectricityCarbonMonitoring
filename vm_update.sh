@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e 
-
+cd ~/ElectricityCarbonMonitoring || { echo "Failed to change directory!"; exit 1; }
 LOG_FILE="vm_update.log"
 
 log() {
